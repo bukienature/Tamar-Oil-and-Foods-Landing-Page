@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Browser metadata and document title. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a3d2e">
+  <meta name="description" content="Tamar Oil and Foods: pure, natural, wholesome palm oil, traditionally processed in Nigeria.">
+  <title>Tamar Oil and Foods | Pure. Natural. Wholesome.</title>
+
+  <!-- Google Fonts: Playfair Display headings and Poppins body text. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Site styles. -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- GSAP scripts power the scroll reveals; defer runs them after HTML parsing. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Header with the temporary text logo and section navigation. -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Tamar Oil and Foods home">
+      <!-- TODO: use assets/logo.png when the standalone crest file is supplied. -->
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span class="brand-name">Tamar <small>Oil and Foods</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#story">Our story</a>
+      <a href="#why-tamar">Why Tamar</a>
+      <a href="#prices">Prices</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero: brand promise, price link, and supplied complete bottle image. -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Tamar Oil and Foods</p>
+        <h1 id="hero-title">Pure. Natural.<br><em>Wholesome.</em></h1>
+        <p class="hero-intro">Palm oil with a purpose: traditionally processed and made with care for the food on your family’s table.</p>
+        <a class="button button-gold" href="#prices">Explore our prices <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="hero-art" aria-label="Tamar palm oil bottle">
+        <div class="hero-halo" aria-hidden="true"></div>
+        <div class="bottle-stage">
+          <img class="bottle-body" src="./Tamar.img/backgroundless oil.webp" alt="Tamar palm oil in a branded bottle">
+          <!-- TODO: replace with matching transparent bottle body and aligned cap layers. -->
+          <span class="cap-unavailable" aria-hidden="true"></span>
+        </div>
+        <p class="hero-note">Traditionally processed · Made with care</p>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true"><span></span> Scroll to discover</div>
+    </section>
+
+    <!-- Brand story supplied by Tamar Oil and Foods. -->
+    <section class="story section-pad" id="story">
+      <div class="section-kicker">Our story</div>
+      <div class="story-grid reveal">
+        <h2>More Than a Brand <em>— A Mission</em></h2>
+        <div class="story-copy">
+          <p>Tamar Oil and Foods was born out of conviction — an inspiration we know was God-given. What started as a personal calling has grown into a mission: to fight food adulteration and bring pure, natural, wholesome food back to African tables.</p>
+          <p>We are not just selling palm oil. We are selling a dream — a future where families across Africa, and eventually the world, can trust what's in their kitchen again. It's a long-term vision, built on integrity — one bottle, one customer, one honest product at a time.</p>
+          <p>Right now, our focus is on perfecting and establishing our palm oil — pure, unadulterated, and traditionally processed. As Tamar Oil and Foods grows, we're also proud to offer quality catfish, with more honest, natural food products to come.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Four reasons to choose Tamar. -->
+    <section class="why section-pad" id="why-tamar">
+      <div class="section-heading reveal">
+        <div class="section-kicker">The Tamar difference</div>
+        <h2>Good food begins<br>with <em>good intentions.</em></h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-no">01</span><h3>100% Natural</h3><p>No chemical bleaching, no additives, no shortcuts. Just palm fruit, processed the traditional way.</p></article>
+        <article class="feature-card"><span class="feature-no">02</span><h3>Traceable Sourcing</h3><p>We know where our palm fruit comes from, and we stand behind every batch we sell.</p></article>
+        <article class="feature-card"><span class="feature-no">03</span><h3>Small-Batch Care</h3><p>We're not a mass factory. Every batch is processed and checked with attention, not rushed.</p></article>
+        <article class="feature-card"><span class="feature-no">04</span><h3>A Mission, Not Just a Product</h3><p>Every purchase supports a long-term fight against food adulteration in Africa.</p></article>
+      </div>
+    </section>
+
+    <!-- General nutrition and cooking facts without medical promises. -->
+    <section class="benefits section-pad" id="benefits">
+      <div class="benefits-intro reveal">
+        <div class="section-kicker">From fruit to table</div>
+        <h2>Why Pure Palm Oil Belongs <em>in Your Kitchen</em></h2>
+        <p>Rooted in West African food traditions, palm oil brings its own color and character to everyday cooking.</p>
+      </div>
+      <ul class="benefit-list">
+        <li><span class="benefit-icon" aria-hidden="true">✳</span><span><strong>Vitamin E</strong><small>Palm oil contains vitamin E compounds, including tocotrienols.</small></span></li>
+        <li><span class="benefit-icon" aria-hidden="true">◉</span><span><strong>Naturally vibrant</strong><small>Beta-carotene contributes to palm oil’s characteristic red-orange color.</small></span></li>
+        <li><span class="benefit-icon" aria-hidden="true">❋</span><span><strong>Made for the everyday kitchen</strong><small>A traditional, versatile cooking oil used across West African cuisine for generations.</small></span></li>
+      </ul>
+    </section>
+
+    <!-- General food adulteration awareness copy. -->
+    <section class="awareness section-pad" id="awareness">
+      <div class="awareness-symbol" aria-hidden="true">T</div>
+      <div class="awareness-copy reveal">
+        <div class="section-kicker">Know what’s on your table</div>
+        <h2>The Hidden Danger of <em>Adulterated Palm Oil</em></h2>
+        <p>Across many markets, palm oil is sometimes mixed with cheaper substitutes, artificial dyes, or industrial additives to cut costs — often without consumers ever knowing. This isn't just a quality issue; it's a trust issue that affects households everywhere.</p>
+        <p>At Tamar Oil and Foods, this is exactly what we exist to fight. Every bottle we sell is a small stand against adulteration — pure palm oil, nothing hidden, nothing added.</p>
+      </div>
+    </section>
+
+    <!-- Wholesale prices and minimum order from the supplied flyer. -->
+    <section class="prices section-pad" id="prices">
+      <div class="prices-heading reveal">
+        <div><div class="section-kicker">Wholesale price list</div><h2>Stock up on <em>goodness.</em></h2></div>
+        <p>Minimum order: <strong>12 pieces</strong><br>Mixed sizes allowed</p>
+      </div>
+      <div class="price-list" role="table" aria-label="Wholesale palm oil prices">
+        <div class="price-row price-head" role="row"><span role="columnheader">Size</span><span role="columnheader">Volume</span><span role="columnheader">Wholesale price</span></div>
+        <div class="price-row" role="row"><span role="cell">01</span><strong role="cell">1 Litre</strong><strong role="cell">₦2,500</strong></div>
+        <div class="price-row" role="row"><span role="cell">02</span><strong role="cell">2 Litre</strong><strong role="cell">₦5,000</strong></div>
+        <div class="price-row" role="row"><span role="cell">03</span><strong role="cell">3 Litre</strong><strong role="cell">₦7,500</strong></div>
+        <div class="price-row" role="row"><span role="cell">04</span><strong role="cell">4 Litre</strong><strong role="cell">₦10,000</strong></div>
+        <div class="price-row" role="row"><span role="cell">05</span><strong role="cell">5 Litre</strong><strong role="cell">₦12,500</strong></div>
+      </div>
+      <p class="price-footnote">Wholesale prices apply to orders of 12 pieces or more. Mixed sizes allowed.</p>
+    </section>
+
+    <!-- Two direct contact methods; no cart or checkout form. -->
+    <section class="contact section-pad" id="contact">
+      <div class="contact-inner reveal">
+        <div class="section-kicker">Let’s make it wholesome</div>
+        <h2>Bring Tamar to <em>your table.</em></h2>
+        <p>Ready to order or want to know more? Get in touch with us directly.</p>
+        <div class="contact-actions">
+          <a class="button button-gold" href="https://wa.me/2348102630587" target="_blank" rel="noopener noreferrer">Order on WhatsApp <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="https://instagram.com/tamar_oil_and_foods" target="_blank" rel="noopener noreferrer">Message on Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="contact-orb" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <!-- Footer contact information and current copyright year. -->
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">T</span><span class="brand-name">Tamar <small>Oil and Foods</small></span></a>
+    <p class="footer-tagline">Pure. Natural. Wholesome.</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/tamar_oil_and_foods" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <span>TikTok: Tamar oil and foods</span>
+      <a href="mailto:jennifernwigwe643@gmail.com">jennifernwigwe643@gmail.com</a>
+    </div>
+    <p class="copyright">© <span id="year">2026</span> Tamar Oil and Foods. All rights reserved.</p>
+  </footer>
+</body>
+</html>
