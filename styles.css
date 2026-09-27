@@ -318,10 +318,13 @@ h2 {
 .copyright { color: rgba(245, 240, 225, .55); font-size: 9px; text-align: right; }
 
 /*
-  Initial state for scroll-revealed content.
-  GSAP animates from these values and restores them on upward scroll.
+  Animation fallback and start states:
+  content is visible by default. script.js adds .gsap-ready only after GSAP is
+  available and reduced motion is off, so a failed script cannot hide the page.
 */
-.reveal, .feature-card { opacity: 0; transform: translateY(26px); }
+.reveal, .feature-card { opacity: 1; transform: none; }
+.gsap-ready .reveal { opacity: 0; transform: translateY(26px); }
+.gsap-ready .feature-card { opacity: 0; transform: translateY(24px); }
 
 /* Tablet layout: two feature cards per row. */
 @media (max-width: 1024px) {
@@ -337,7 +340,7 @@ h2 {
 }
 
 /* Mobile and small tablet layout. */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .site-header { height: 70px; }
   .site-header nav { gap: .9rem; }
   .site-header nav a { font-size: 10px; }

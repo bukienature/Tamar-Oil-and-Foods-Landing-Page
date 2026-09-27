@@ -20,9 +20,14 @@
     return;
   }
 
+  // Opt in to hidden animation start states only when GSAP is ready.
+  // Without JavaScript, without GSAP, or with reduced motion enabled, content
+  // stays visible using the default CSS state.
+  document.documentElement.classList.add("gsap-ready");
+
   gsap.registerPlugin(ScrollTrigger);
 
-  // Fade and slide each marked section in, then reverse it when scrolling up.
+  // Fade and slide each marked section in, then reverse it on scroll-up.
   const revealElements = gsap.utils.toArray(".reveal");
 
   revealElements.forEach((element) => {
@@ -43,7 +48,7 @@
     );
   });
 
-  // Stagger the feature cards and reverse the stagger on upward scrolling.
+  // Stagger feature cards; reverse the stagger on upward scrolling.
   gsap.fromTo(
     ".feature-card",
     { autoAlpha: 0, y: 24 },
@@ -62,38 +67,59 @@
   );
 
   /*
-    TODO: Enable the separate cap lift after adding matching transparent assets:
-    assets/bottle-body.png and assets/bottle-cap.png. The current hero uses a
-    complete bottle photo, and the supplied close-up cap does not align to it.
+    Rebuild the bottle tween when the viewport crosses 768px. matchMedia
+    reverts the old animation before activating the new layout's animation.
   */
-  const bottleStage = document.querySelector(".bottle-stage");
-  if (!bottleStage) {
-    return;
-  }
+  ScrollTrigger.matchMedia({
+    // Desktop bottle tilt: mild scale and 3D rotation.
+    "(min-width: 768px)": function () {
+      const bottle = document.querySelector(".bottle-body");
+      if (!bottle) return;
 
-  // Skip 3D rotation on mobile for smoother performance on smaller devices.
-  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      gsap.to(bottle, {
+        scale: 1.08,
+        rotateY: 12,
+        rotateZ: -2,
+        transformPerspective: 800,
+        transformOrigin: "50% 65%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    },
 
-  // Scrub a subtle scale and tilt as the hero section scrolls away.
-  const bottleTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
+    // Mobile bottle motion: scale and translate only, with no 3D rotation.
+    "(max-width: 767px)": function () {
+      const bottle = document.querySelector(".bottle-body");
+      if (!bottle) return;
+
+      gsap.to(bottle, {
+        scale: 1.04,
+        rotateY: 0,
+        rotateZ: 0,
+        transformOrigin: "50% 65%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     },
   });
 
-  bottleTimeline.to(
-    ".bottle-body",
-    {
-      scale: isMobile ? 1.04 : 1.08,
-      rotateY: isMobile ? 0 : 12,
-      rotateZ: isMobile ? 0 : -2,
-      transformPerspective: 800,
-      transformOrigin: "50% 65%",
-      ease: "none",
-    },
-    0
-  );
+  // Debounce resize refreshes so they run after the layout settles.
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+  });
+
+  // Recalculate trigger positions after fonts, images, and other assets load.
+  window.addEventListener("load", () => ScrollTrigger.refresh());
 })();
